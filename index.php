@@ -33,9 +33,9 @@ include 'nav.php';
 <input type="hidden" id="people" value="<?php echo PEOPLE ;?>">
 <input type="hidden" id="urls" value="<?php echo implode(',', $urls); ?>">
 <input type="hidden" id="website" value="<?php echo WEBSITE; ?>">
-<div class="pagination pagination-centered pagination-small"><?=$button;?></div>
+<div class="pagination pagination-centered pagination-small"><?php echo $button;?></div>
 <div class="container">
-    <div class="date"><span class="yellow">Date</span><?php echo $dates; ?></div>   
+    <div class="date"><span class="yellow">Date</span><?php echo $dates; ?></div>
     <div class="loader"><img src="img/ajax-loader.gif"></div>
     <table class="table table-condensed table-striped">
         <thead>

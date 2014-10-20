@@ -1,4 +1,5 @@
 <?php
+
 $siteTitle = !empty($_POST['site-title']) ? $_POST['site-title'] : '';
 $people = !empty($_POST['people']) ? intval($_POST['people']) : 6;
 $startDate = $_POST['start-date'];
@@ -8,6 +9,7 @@ $number = !empty($_POST['number']) ? intval($_POST['number']) : 0;
 $website = !empty($_POST['website']) ? $_POST['website'] : 'http://basketball.fantasysports.yahoo.com';
 
 $line = "<?php\n";
+$line .= "\n";
 $line .= "define('SITE_TITLE', '{$siteTitle}');\n";
 $line .= "define('PEOPLE', {$people});\n";
 $line .= "define('START_DATE', '{$startDate}');\n";
@@ -22,4 +24,3 @@ fwrite($handler, $line);
 fclose($handler);
 
 header('Location: setup.php?up=true');
-?>

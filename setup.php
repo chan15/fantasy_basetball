@@ -18,7 +18,7 @@ include 'nav.php';
 <div class="pagination pagination-centered pagination-small"><?=$button;?></div>
 <div class="container">
     <?php
-    if (isset($_GET['up'])) {
+    if (true === isset($_GET['up'])) {
     ?>
     <div class="alert">edit succeed</div>
     <?php } ?>

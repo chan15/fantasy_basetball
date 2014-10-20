@@ -4,25 +4,25 @@ $(function() {
         tbody = $('.table tbody'),
         table = $('#player-table').tablesorter(),
         result;
-        
+
     // Clear button
     $('#btn-clear').on('click', function() {
         tbody.html('');
     });
-    
+
     // Remove button
     tbody.on('click', '.btn-minus', function() {
         $(this).closest('tr').remove();
         table.trigger('update');
         return false;
     });
-    
-    // Search name    
+
+    // Search name
     $( "#keyword" ).autocomplete({
         source: "ajax-player.php",
         minLength: 3
     });
-    
+
     // Search player
     $('#btn-search').on('click', function() {
         if (keyword.val() != '') {

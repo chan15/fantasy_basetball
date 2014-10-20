@@ -30,19 +30,21 @@ $(function() {
     function loadGamers() {
         var results = [],
             result;
-            
+
         gamerUrls = gamerUrls.split(',');
 
         for (i in gamerUrls) {
             result = $.post('proxy.php', {url: gamerUrls[i]}, function(response) {
-                var dom = $(response);
-                var gamerName = dom.filter('title').text().split('-');
-                var playerName;
-                var html = '';
-                var table =  '<table class="table table-condensed table-striped">';
+                var dom = $(response),
+                    gamerName = dom.filter('title').text(),
+                    playerName,
+                    html = '',
+                    table =  '<table class="table table-condensed table-striped">';
 
                 table += '<thead><th>Updated</th><th>Name</th><th>Team</th><th>Injury</th><th>Return</th></thead><tbody>';
-                gamerName = '<h3>' + $.trim(gamerName[gamerName.length - 1]) + '</h3>';
+                gamerName = gamerName.split('-')[1];
+                gamerName = gamerName.split('|')[0];
+                gamerName = '<h3>' + $.trim(gamerName) + '</h3>';
                 html += gamerName;
 
                 dom.find('#statTable0 tbody tr').each(function() {

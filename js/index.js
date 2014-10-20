@@ -10,7 +10,7 @@ $(function() {
         loader = $('.loader'),
         website = $('#website'),
         template = [],
-        tdClasses = [ 
+        tdClasses = [
             'fg',
             'ft',
             '3pt',
@@ -49,7 +49,7 @@ $(function() {
                 result.find('#matchup-wall-header tbody tr').each(function() {
                     html = '';
                     html += '<tr class="move">';
-                    href = $(this).find('a').attr('href');  
+                    href = $(this).find('a').attr('href');
                     id = href.split('/');
                     id = id[id.length - 1];
 
@@ -81,12 +81,12 @@ $(function() {
         $('.high').removeClass('high');
 
         for (i in tdClasses) {
-            css = '.' + tdClasses[i]; 
+            css = '.' + tdClasses[i];
             highIndex = 0;
             lowIndex = 0;
             high = 0;
             low = 0;
-            
+
             $(css).each(function(j) {
                 currentValue = parseInt($(this).text().replace('.', ''));
 
@@ -102,7 +102,7 @@ $(function() {
                     lowIndex = j;
                 }
             });
-            
+
             if ('to' !== tdClasses[i]) {
                 $(css).eq(highIndex).addClass('high', 'slow');
             } else {

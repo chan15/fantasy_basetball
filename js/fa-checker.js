@@ -3,7 +3,7 @@ $(function() {
         $sec = 30000,
         $pattern = /^W \(\w* \d*\)$/;
 
-    // search name    
+    // search name
     $( "#player" ).autocomplete({
         source: "ajax-player.php",
         minLength: 3

@@ -1,4 +1,5 @@
 <?php
+
 include 'config.php';
 include 'functions.php';
 include 'libs/simple_html_dom.php';

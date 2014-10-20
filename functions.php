@@ -1,4 +1,5 @@
 <?php
+
 // get page content from cURL
 function getUrl($url) {
     $ch = curl_init(); 
@@ -28,7 +29,7 @@ function stripHtml($text) {
         ),
         $text
     );
-    
+
 	return $text;
 }
 ?>

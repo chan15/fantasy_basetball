@@ -1,4 +1,5 @@
 <?php
+
 include 'libs/simple_html_dom.php';
 include 'functions.php';
 include 'config.php';
@@ -54,4 +55,3 @@ foreach ($urls as $url) {
 }
 
 echo $str;
-?>
