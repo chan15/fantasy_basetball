@@ -1,6 +1,6 @@
 <?php
 
-// get page content from cURL
+// Get page content from cURL
 function getUrl($url) {
     $ch = curl_init(); 
     $opt = array(
@@ -16,7 +16,7 @@ function getUrl($url) {
     return $result;
 }
 
-// strip all tag but table
+// Strip all tag but table
 function stripHtml($text) {
     $text = preg_replace(
         array(
@@ -32,4 +32,15 @@ function stripHtml($text) {
 
 	return $text;
 }
-?>
+
+// Send mail
+function sendMail($to, $playerName) {
+    $to      = $to;
+    $subject = 'FA Inform';
+    $message = 'Your player ' . $playerName . ' is available!';
+    $headers = 'From: chan15tw@gmail.com' . "\r\n" .
+        'Reply-To: chan15tw@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+}

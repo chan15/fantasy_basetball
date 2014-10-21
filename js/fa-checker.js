@@ -1,21 +1,20 @@
 $(function() {
-    var $fa = $('.status').html(),
-        $sec = 30000,
-        $pattern = /^W \(\w* \d*\)$/;
+    var status = $('.status').text(),
+        second = 30000;
 
-    // search name
+    // Search name
     $( "#player" ).autocomplete({
         source: "ajax-player.php",
         minLength: 3
     });
 
-    if ($fa != '') {
-        if (!$fa.match($pattern)) {
+    if ('' !== status) {
+        if ('FA' === status) {
             alert('FA');
         } else {
             setTimeout(function() {
                 window.location.reload();
-            }, $sec);
+            }, second);
         }
     }
 });

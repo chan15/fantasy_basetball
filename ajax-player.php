@@ -4,15 +4,21 @@ include 'main.php';
 
 // Search player name
 if (true === isset($_GET['term'])) {
-    $url = $playerNameUrl . $_GET['term'];
+    $searchName = strtolower($_GET['term']);
+    $url = $playerNameUrl . $searchName;
     $json = json_decode(getUrl($url), true);
-    $player = $json['objects'][0]['aResult'];
+    $players = $json['objects'][0]['aResult'];
+    $names = array();
 
-    foreach ($player as $v) {
-        $name[] = $v['sPlayerName'];
+    foreach ($players as $player) {
+        $playerName = $player['sPlayerName'];
+
+        if (true == strstr(strtolower($playerName), $searchName)) {
+            $names[] = $playerName;
+        }
     }
 
-    echo json_encode($name);
+    echo json_encode($names);
 }
 
 // Search player
