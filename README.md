@@ -15,7 +15,7 @@ The program is based on PHP 5+, and database is not necessary.
 
 ![](https://lh3.googleusercontent.com/-2rcea21p9a0/VFB_YqaYRAI/AAAAAAABBDs/SXxd8hPQ9zw/w1142-h517-no/match_data.png)
 
-It's not easy to check all games in your league at the same time, but actually everyone is your opponent, you shold know everyones' strength and weakness for making strategy for the furture, Match Data could show all player's immediate data, you can even drag player to compare the data.
+It's not easy to check all games in your league at the same time, but actually everyone is your opponent, you should know everyones' strength and weakness for making strategy for the furture, Match Data could show all player's immediate data, you can even drag player to compare the data.
 
 ### Injury Data
 
