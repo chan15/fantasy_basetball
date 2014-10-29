@@ -51,7 +51,7 @@ include 'nav.php';
                 <tr>
                     <td>Start Date</td>
                     <td>
-                        <input type="text" name="start-date" value="<?php echo ('' === START_DATE) ? date('Y-m-d'): START_DATE; ?>" class="input-small datepicker">
+                        <input type="text" name="start-date" value="<?php echo ('' === START_DATE) ? date('Y-m-28'): START_DATE; ?>" class="input-small datepicker">
                     </td>
                 </tr>
                 <tr>
