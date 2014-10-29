@@ -1,7 +1,6 @@
 $(function() {
     var high = 0,
         low = 0,
-        currentValue = 0,
         highIndex = 0,
         lowIndex = 0,
         css,
@@ -10,16 +9,7 @@ $(function() {
         loader = $('.loader'),
         website = $('#website'),
         template = [],
-        tdClasses = [
-            'fg',
-            'ft',
-            '3pt',
-            'pts',
-            'reb',
-            'ast',
-            'st',
-            'blk',
-            'to'];
+        tdClasses = [];
 
     // Start to load page
     loadPage().done(function() {
@@ -41,11 +31,26 @@ $(function() {
             avatar,
             link,
             href,
-            html;
+            html,
+            heads = [];
 
         for (i in urls) {
             result = $.post('proxy.php',{url: urls[i]}, function(response) {
                 result = $(response);
+
+                // Grab head
+                if (0 === heads.length) {
+                    result.find('#matchup-wall-header thead tr th').each(function() {
+                        heads.push($(this).text());
+                    });
+
+                    var headHtml = $.map(heads, function(item) {
+                        return '<th>' + item + '</th>';
+                    }).join('');
+
+                    $('.heads').append(headHtml);
+                }
+
                 result.find('#matchup-wall-header tbody tr').each(function() {
                     html = '';
                     html += '<tr class="move">';
@@ -59,7 +64,7 @@ $(function() {
                             link = '<a href="' + website.val() + href + '" target="_blank">' + $(this).text() + '</a>'
                             html += '<td class="name"><img src="' + avatar.prop('src')  + '">' + link + '</td>';
                         } else {
-                            html += '<td class= "' + tdClasses[j - 1] + '">' + $(this).text() + '</td>';
+                            html += '<td class= "' + heads[j].toLowerCase().replace('%', '').replace('/', '') + '">' + $(this).text() + '</td>';
                         }
                     });
 
@@ -80,35 +85,41 @@ $(function() {
     function markHigh() {
         $('.high').removeClass('high');
 
-        for (i in tdClasses) {
-            css = '.' + tdClasses[i];
-            highIndex = 0;
-            lowIndex = 0;
-            high = 0;
-            low = 0;
+        tableBody.find('tr:first td:gt(0)').each(function() {
+            var className = $(this).prop('class');
 
-            $(css).each(function(j) {
-                currentValue = parseInt($(this).text().replace('.', ''));
+            $('.' + className).each(function(i) {
+                var text = $(this).text();
 
-                if (currentValue > high) {
-                    high = currentValue;
-                    highIndex = j;
+                if ('-' === text) {
+                    text = 0;
                 }
 
-                if (0 === low) low = currentValue;
+                text = parseFloat(text);
 
-                if (currentValue < low) {
-                    low = currentValue;
-                    lowIndex = j;
+                if (text >= high) {
+                    high = text;
+                    highIndex = i;
+                }
+
+                if (text <= low) {
+                    low = text;
+                    lowIndex = i;
                 }
             });
 
-            if ('to' !== tdClasses[i]) {
-                $(css).eq(highIndex).addClass('high', 'slow');
-            } else {
-                // Only to item win by lowest
-                $(css).eq(lowIndex).addClass('high', 'slow');
+            if ('score' !== className) {
+                if ('to' !== className) {
+                    $('.' + className).eq(highIndex).addClass('high', 'slow');
+                } else {
+                    $('.' + className).eq(lowIndex).addClass('high', 'slow');
+                }
             }
-        }
+
+            high = 0;
+            highIndex = 0;
+            low = 0;
+            lowIndex = 0;
+        });
     }
 });

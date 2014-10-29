@@ -40,19 +40,7 @@ include 'nav.php';
     <div class="loader"><img src="img/ajax-loader.gif"></div>
     <table class="table table-condensed table-striped">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>FG%</th>
-                <th>FT%</th>
-                <th>3PT</th>
-                <th>PTS</th>
-                <th>REB</th>
-                <th>AST</th>
-                <th>STL</th>
-                <th>BLK</th>
-                <th>TO</th>
-                <th>Score</th>
-            </tr>
+            <tr class="heads"></tr>
         </thead>
         <tbody></tbody>
     </table>
