@@ -33,6 +33,6 @@ You can only search one player each time on Yahoo Fantasy website, but Player Da
 
 ![](https://lh4.googleusercontent.com/-vDGjv03D31Y/VFCCcapBo4I/AAAAAAABBEI/Zxs9oXbCvhE/w1143-h368-no/setup.png)
 
-When you put the code on your own server, go to **setup.php** page, ***MAKE SURE YOU TYPE EVERYTHING RIGHT!*** and better delete **setup.php** after that.
+When you put the code on your own server, go to **setup.php** page, ***MAKE SURE YOU TYPE EVERYTHING RIGHT!*** and better delete **setup.php** after save.
 
 *Enjoy it :)*
