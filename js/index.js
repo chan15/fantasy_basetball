@@ -102,7 +102,7 @@ $(function() {
                     highIndex = i;
                 }
 
-                if (text <= low) {
+                if (text <= low || 0 === low) {
                     low = text;
                     lowIndex = i;
                 }
