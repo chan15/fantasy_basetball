@@ -35,4 +35,6 @@ You can only search one player each time on Yahoo Fantasy website, but Player Da
 
 When you put the code on your own server, go to **setup.php** page, ***MAKE SURE YOU TYPE EVERYTHING RIGHT!*** and better delete **setup.php** after save.
 
+Make sure your league is **in public**.
+
 *Enjoy it :)*
