@@ -9,12 +9,11 @@ $email = @$_GET['email'];
 if (null !== $name) {
     $url = $playerUrl . str_replace(' ', '%20', $name);
     $html = file_get_html($url);
-
     $tr = $html->find('div.players', 0)->find('table', 0)->find('tr', 2);
     $name = $tr->find('td', 1)->find('a.Nowrap', 0)->innertext;
-    $status = trim($tr->find('td', 4)->find('a', 0)->innertext);
+    $status = strip_tags(trim($tr->find('td', 4)->innertext));
 
-    if ('' === $status) {
+    if ('FA' === $status) {
         $status = 'FA';
 
         sendMail($email, $name);
